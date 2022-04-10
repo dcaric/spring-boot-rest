@@ -14,10 +14,27 @@ import java.util.List;
 @Service
 public class StudentService {
 
-    @Autowired
+   @Autowired
     private StudentRepository studentRepository;
 
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
+    }
+
+    public  Student getById(Long id) {
+        return studentRepository.findById(id).get();
+    }
+
+    public Student createStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public Student updateStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public String deleteStudent(Long id) {
+        studentRepository.deleteById(id);
+        return "Student has been deleted";
     }
 }

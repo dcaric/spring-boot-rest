@@ -3,9 +3,7 @@ package com.infybuzz.controller;
 import com.infybuzz.entity.Student;
 import com.infybuzz.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,25 @@ public class StudentController {
     @GetMapping("/getAllStudents")
     public List<Student> getAllStudents() {
         return studentService.getAllStudents();
+    }
+
+    @GetMapping("/getById/{id}")
+    public Student getById(@PathVariable Long id) {
+        return studentService.getById(id);
+    }
+
+    @PostMapping("/create")
+    public Student createStudent(@RequestBody Student student) {
+        return studentService.createStudent(student);
+    }
+
+    @PutMapping("/update")
+    public Student updateStudent(@RequestBody Student student) {
+        return studentService.updateStudent(student);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable Long id) {
+        return studentService.deleteStudent(id);
     }
 }
