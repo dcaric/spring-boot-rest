@@ -1,6 +1,8 @@
 package com.infybuzz.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author dcaric on 10/04/2022
@@ -8,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="student")
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,13 @@ public class Student {
     private String lastName;
 
     private String email;
+
+    @JoinColumn(name = "dept_id")
+    @ManyToOne
+    private Department department;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<SubjectsLearning> subjectsLearning;
 
     public Long getId() {
         return id;
@@ -53,4 +62,21 @@ public class Student {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<SubjectsLearning> getSubjectsLearning() {
+        return subjectsLearning;
+    }
+
+    public void setSubjectsLearning(List<SubjectsLearning> subjectsLearning) {
+        this.subjectsLearning = subjectsLearning;
+    }
 }
+

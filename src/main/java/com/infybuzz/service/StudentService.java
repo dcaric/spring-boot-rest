@@ -1,6 +1,8 @@
 package com.infybuzz.service;
 
 import com.infybuzz.entity.Student;
+import com.infybuzz.entity.StudentTypes.StudentSimple;
+import com.infybuzz.entity.StudentTypes.StudentSimpleClass;
 import com.infybuzz.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,19 @@ import java.util.List;
 @Service
 public class StudentService {
 
-   @Autowired
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    @Autowired
     private StudentRepository studentRepository;
 
+
     public List<Student> getAllStudents() {
+        //return studentRepository.findByNameLike("Peter");
+        //return studentRepository.findAllNative();
         return studentRepository.findAll();
+    }
+
+    public List<StudentSimple> getAllStudents2(String name) {
+        return studentRepository.findByNameLike2(name);
     }
 
     public  Student getById(Long id) {
