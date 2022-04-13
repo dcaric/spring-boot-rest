@@ -7,4 +7,5 @@ package com.infybuzz.entity.StudentTypes;
 public interface StudentSimple {
     public Long getId();
     public String getFirstName();
+    public String getLastName();
 }

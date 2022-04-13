@@ -18,8 +18,8 @@ public class Department {
     @Column(name = "dept_name")
     public String deptName;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Student> students;
+/*    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Student> students;*/
 
     public Long getId() {
         return id;
@@ -37,11 +37,11 @@ public class Department {
         this.deptName = deptName;
     }
 
-    public List<Student> getStudents() {
+/*    public List<Student> getStudents() {
         return students;
     }
 
     public void setStudents(List<Student> students) {
         this.students = students;
-    }
+    }*/
 }
