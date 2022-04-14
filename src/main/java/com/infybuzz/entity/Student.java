@@ -28,8 +28,19 @@ public class Student implements Serializable {
     @ManyToOne
     private Department department;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<SubjectsLearning> subjectsLearning;
+    public Student(Long id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public Student() {
+
+    }
+
+    //@OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    //private List<SubjectsLearning> subjectsLearning;
 
     public Long getId() {
         return id;
@@ -71,12 +82,12 @@ public class Student implements Serializable {
         this.department = department;
     }
 
-    public List<SubjectsLearning> getSubjectsLearning() {
+/*    public List<SubjectsLearning> getSubjectsLearning() {
         return subjectsLearning;
     }
 
     public void setSubjectsLearning(List<SubjectsLearning> subjectsLearning) {
         this.subjectsLearning = subjectsLearning;
-    }
+    }*/
 }
 
