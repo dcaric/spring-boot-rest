@@ -22,8 +22,7 @@ public class StudentService {
 
 
     public List<Student> getAllStudents() {
-        //return studentRepository.findByNameLike("Peter");
-        //return studentRepository.findAllNative();
+        System.out.println("FINDALL");
         return studentRepository.findAll();
     }
 

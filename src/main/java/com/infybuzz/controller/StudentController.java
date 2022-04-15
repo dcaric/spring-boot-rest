@@ -10,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author dcaric on 10/04/2022
@@ -34,7 +37,17 @@ public class StudentController {
     }
     @GetMapping("/getAllStudents")
     public List<Student> getAllStudents() {
-        return studentService.getAllStudents();
+        System.out.println("getAllStudents");
+
+        Student RECORD_1 = new Student(33L, "dario1", "caric", "dario1.caric@gmail.com");
+        Student RECORD_2 = new Student(34L, "dario2", "caric", "dario2.caric@gmail.com");
+        List<Student> records = new ArrayList<>(Arrays.asList(RECORD_1, RECORD_2));
+        System.out.println("All students: " + records);
+        return records.size() > 0 ? records : List.of();
+
+        //List<Student> allStudents = studentService.getAllStudents();
+
+        //return allStudents.size() > 0 ? allStudents: List.of();
     }
 
     @GetMapping("/getById/{id}")
