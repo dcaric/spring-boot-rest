@@ -180,10 +180,12 @@ public class StudentService {
     }
 
     public String generatePdfFromHtml(String html) throws IOException, DocumentException {
-        String currentPath = new java.io.File(".").getCanonicalPath() + "/src/main/resources/templates/";
+        String currentPath = new java.io.File(".").getCanonicalPath() + "classes/templates/";
         System.out.println("currentPath: " + currentPath);
 
-        String outputFile = currentPath + "thymeleaf.pdf";
+        String savedPath =  System.getProperty("user.dir");
+
+        String outputFile = savedPath + "thymeleaf.pdf";
         System.out.println("outputFile: " + outputFile);
         OutputStream outputStream = new FileOutputStream(outputFile);
 
